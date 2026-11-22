@@ -10,17 +10,29 @@ Available for Apple Silicon and Linux ARM64 (glibc 2.34 or newer).
 ```sh
 brew install futureflowtech/tap/graphiti
 graphiti remember --group project 'Use rustls for gateway TLS.'
-graphiti recall --group project rustls
+graphiti recall --group project --links rustls
 graphiti eval
 ```
 
 If Homebrew asks you to trust the formula, run `brew tap futureflowtech/tap`
 and `brew trust --formula futureflowtech/tap/graphiti`, then retry the install.
 
-Use `graphiti --help` for linked notes, JSON output, and deletion. Notes are
-stored in a local file; no server, API key, or model is required. The built-in
-evaluation uses a temporary synthetic corpus and does not touch your notes.
-The [release assets](https://github.com/futureflowtech/homebrew-tap/releases?q=graphiti)
+Beyond notes, `graphiti` drives the same embedded graph engine from the
+shell: `search` (BM25, vector, graph traversal, hybrid RRF, structured
+filters, and all recipes), `similar`, `episode`, `fact`, `entity`,
+`community`, `graph export/import`, `queue`/`worker` for the durable
+ingestion queue, `reflect`/`note synthesize`, and `index`/`db` maintenance.
+
+Everything stays on the machine: the redb file is local, and the optional
+OpenAI-compatible model endpoint is restricted to loopback (`127.0.0.1`,
+`localhost`, `::1`). Commands that need embeddings or chat require an
+explicit model; the rest run without one. `graphiti eval` exercises the
+embedded store on a temporary synthetic corpus — exact and HNSW search,
+linked context, and group isolation — without touching your notes.
+
+Run `graphiti --help` for the full command list and `graphiti <command>
+--help` for options. The
+[release assets](https://github.com/futureflowtech/homebrew-tap/releases?q=graphiti)
 include the corresponding Cozo source.
 
 ## codegraph-cli
