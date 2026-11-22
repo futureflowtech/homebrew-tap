@@ -1,19 +1,19 @@
 class Graphiti < Formula
   desc "Offline memory and context CLI backed by embedded CozoDB and redb"
   homepage "https://github.com/futureflowtech/homebrew-tap#graphiti"
-  version "0.3.4"
+  version "0.3.5"
   license all_of: ["Apache-2.0", "MPL-2.0"]
 
   depends_on arch: :arm64
 
   on_macos do
-    url "https://github.com/futureflowtech/homebrew-tap/releases/download/graphiti-v0.3.4/graphiti-0.3.4-darwin-arm64.tar.gz"
-    sha256 "be0812407a2bd78d28841bc89c0c75e56a9f30dc1817a0195c494916746719e4"
+    url "https://github.com/futureflowtech/homebrew-tap/releases/download/graphiti-v0.3.5/graphiti-0.3.5-darwin-arm64.tar.gz"
+    sha256 "92165a6663a5e2376212e4eb0d0cd3a15bda69c86a81003fd9144dde65be8641"
   end
 
   on_linux do
-    url "https://github.com/futureflowtech/homebrew-tap/releases/download/graphiti-v0.3.4/graphiti-0.3.4-linux-arm64.tar.gz"
-    sha256 "b9d57e7711c15b7a4afce0064939da480a35687a4e6186a97c3a2c379b87ff7a"
+    url "https://github.com/futureflowtech/homebrew-tap/releases/download/graphiti-v0.3.5/graphiti-0.3.5-linux-arm64.tar.gz"
+    sha256 "e660ef36faef6c3026784d17389bb1babf96202d46271d5cb2cf662d1ad38b5e"
   end
 
   def install
