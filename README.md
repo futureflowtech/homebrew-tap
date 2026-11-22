@@ -23,12 +23,18 @@ filters, and all recipes), `similar`, `episode`, `fact`, `entity`,
 `community`, `graph export/import`, `queue`/`worker` for the durable
 ingestion queue, `reflect`/`note synthesize`, and `index`/`db` maintenance.
 
-Everything stays on the machine: the redb file is local, and the optional
-OpenAI-compatible model endpoint is restricted to loopback (`127.0.0.1`,
-`localhost`, `::1`). Commands that need embeddings or chat require an
-explicit model; the rest run without one. `graphiti eval` exercises the
-embedded store on a temporary synthetic corpus — exact and HNSW search,
-linked context, and group isolation — without touching your notes.
+Everything stays on the machine: the redb file is local, and every optional
+OpenAI-compatible endpoint is restricted to loopback (`127.0.0.1`,
+`localhost`, `::1`). Chat and embeddings can use different servers
+(`--chat-url`, `--embed-url`); `--thinking=auto|off|on` controls reasoning
+models, and `--embed-query-prefix` / `--embed-doc-prefix` cover models such
+as EmbeddingGemma that expect instruction prefixes. Commands that need
+embeddings or chat require an explicit model; the rest run without one.
+
+Read-only commands skip schema DDL, never create a missing database, and wait
+for a concurrent writer instead of failing with a lock error. `graphiti eval`
+exercises the embedded store on a temporary synthetic corpus — exact and HNSW
+search, linked context, and group isolation — without touching your notes.
 
 Run `graphiti --help` for the full command list and `graphiti <command>
 --help` for options. The
@@ -60,6 +66,18 @@ This installs the `codegraph-cli` binary (with a `codegraph` alias). Verify:
 
 ```sh
 codegraph-cli version
+```
+
+Running `codegraph` with no arguments prints index status; writes require an
+explicit `codegraph index`, `codegraph sync`, or `codegraph init`. Parallel
+query commands wait for the index lock instead of failing, status counters
+are materialized after each full index/sync, and `explore` accepts a
+`--timeout`.
+
+```sh
+codegraph unresolved                 # unresolved refs by language, kind, and file
+codegraph enrich scip-index.json     # add compiler-resolved edges from SCIP
+codegraph explore --timeout 20s TokenA TokenB
 ```
 
 ### Upgrade
