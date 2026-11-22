@@ -1,28 +1,28 @@
 class CodegraphCli < Formula
   desc "Structural code graph — index and query a codebase"
   homepage "https://github.com/futureflowtech/codegraph"
-  version "1.2.0"
+  version "1.2.1"
   license :cannot_represent
 
   on_macos do
     on_arm do
-      url "https://github.com/futureflowtech/homebrew-tap/releases/download/codegraph-v1.2.0/codegraph-cli-1.2.0-darwin-arm64.tar.gz"
-      sha256 "da7534471b076f77c25c0f6b898a5adda97b577b9348da2da5ca026c032cfdf3"
+      url "https://github.com/futureflowtech/homebrew-tap/releases/download/codegraph-v1.2.1/codegraph-cli-1.2.1-darwin-arm64.tar.gz"
+      sha256 "427b07743178ba2a53c6cae9ada69461935ae4ee11426c6cdbb15bf92b8dfc89"
     end
     on_intel do
-      url "https://github.com/futureflowtech/homebrew-tap/releases/download/codegraph-v1.2.0/codegraph-cli-1.2.0-darwin-amd64.tar.gz"
-      sha256 "19d6f220d96f1d48e607bdc080ef5851934699387c8b2323583aff945bafbdf3"
+      url "https://github.com/futureflowtech/homebrew-tap/releases/download/codegraph-v1.2.1/codegraph-cli-1.2.1-darwin-amd64.tar.gz"
+      sha256 "a57991714aac98b1dcde86c806b7c230b4ab8fd61cce5aa735b3699eb6011a28"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/futureflowtech/homebrew-tap/releases/download/codegraph-v1.2.0/codegraph-cli-1.2.0-linux-arm64.tar.gz"
-      sha256 "07817447acaf52c8033380dfea9abe27170fd6030458f89b5b69cda03f412a69"
+      url "https://github.com/futureflowtech/homebrew-tap/releases/download/codegraph-v1.2.1/codegraph-cli-1.2.1-linux-arm64.tar.gz"
+      sha256 "c4f5397f4b863cd4f60e1139ca79c4b4cf73bfe21350218d03b70005c25d6e26"
     end
     on_intel do
-      url "https://github.com/futureflowtech/homebrew-tap/releases/download/codegraph-v1.2.0/codegraph-cli-1.2.0-linux-amd64.tar.gz"
-      sha256 "5abb15070f4cd969974d7d05c13eae10cea03d533d71ba00e19b0f47aa7e4fe7"
+      url "https://github.com/futureflowtech/homebrew-tap/releases/download/codegraph-v1.2.1/codegraph-cli-1.2.1-linux-amd64.tar.gz"
+      sha256 "608189082be0c745c7154257c08f077ce5621aef48258dee84ee2a65578a6401"
     end
   end
 
