@@ -41,6 +41,9 @@ brew tap futureflowtech/tap
 brew install codegraph-cli
 ```
 
+If Homebrew asks you to trust the formula, run
+`brew trust --formula futureflowtech/tap/codegraph-cli` and retry the install.
+
 This installs the `codegraph-cli` binary (with a `codegraph` alias). Verify:
 
 ```sh
@@ -50,16 +53,17 @@ codegraph-cli version
 ### Upgrade
 
 ```sh
-brew update && brew upgrade codegraph-cli
+brew update && brew upgrade futureflowtech/tap/codegraph-cli
 ```
 
 ### Platforms
 
-Prebuilt binaries are published for macOS (Apple Silicon + Intel) and Linux
-(arm64 + x86_64). The binaries are distributed obfuscated; the formula simply
-downloads and installs the appropriate release asset.
+Prebuilt binaries are published for macOS 13+ (Apple Silicon and Intel) and
+Linux with glibc 2.34+ (ARM64 and x86-64). The binaries are distributed
+obfuscated; the formula installs the appropriate release asset. The
+[release assets](https://github.com/futureflowtech/homebrew-tap/releases?q=codegraph)
+include the corresponding Cozo source for 1.2.0 and later releases that bundle it.
 
 ---
 
-Releases and this formula are published automatically by the
-`release-codegraph` workflow in the (private) `converse` repository.
+Codegraph release source is maintained in the private `converse` repository.
