@@ -35,12 +35,16 @@ class CodegraphCli < Formula
   test do
     ENV.delete("COZO_LIB_PATH")
     assert_equal version.to_s, shell_output("#{bin}/codegraph version").strip
-    (testpath/"callee.ts").write("export function Callee(x: number): number { return x + 1; }\n")
-    (testpath/"caller.ts").write <<~JS
+    project = testpath/"fixture"
+    project.mkpath
+    (project/"callee.ts").write("export function Callee(x: number): number { return x + 1; }\n")
+    (project/"caller.ts").write <<~JS
       import { Callee } from "./callee";
       export function Caller(x: number): number { return Callee(x); }
     JS
-    system bin/"codegraph-cli", "index", "--no-tui"
-    assert_match '"name": "Caller"', shell_output("#{bin}/codegraph-cli callers --json Callee")
+    cd project do
+      system bin/"codegraph-cli", "index", "--no-tui"
+      assert_match '"name": "Caller"', shell_output("#{bin}/codegraph-cli callers --json Callee")
+    end
   end
 end
